@@ -1,0 +1,45 @@
+name: Hexo Deploy to GitHub Pages
+
+# 监听 main 分支的推送
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest  # 使用 Ubuntu 环境
+    steps:
+      # 1. 拉取仓库代码
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          submodules: true  # 确保主题等子模块被拉取
+          fetch-depth: 0    # 拉取完整历史
+
+      # 2. 安装 Node.js（Hexo 依赖 Node）
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'  # 指定 Node 版本（14+ 均可）
+          cache: 'npm'        # 缓存依赖，加速构建
+
+      # 3. 安装 Hexo 及项目依赖
+      - name: Install Dependencies
+        run: |
+          npm install hexo-cli -g  # 全局安装 Hexo 命令行
+          npm install              # 安装项目依赖（package.json 中的依赖）
+
+      # 4. 运行 Hexo 命令生成静态文件
+      - name: Generate Static Files
+        run: |
+          hexo clean  # 清理缓存
+          hexo generate  # 生成静态文件（输出到 public 目录）
+
+      # 5. 部署到 GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3  # 专用部署工具
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # 自动获取仓库权限
+          publish_dir: ./public  # 指定 Hexo 生成的静态文件目录
+          publish_branch: gh-pages  # 部署到 gh-pages 分支（GitHub Pages 默认读取此分支）
