@@ -41,9 +41,15 @@ if (m == 10 && dd <= 3) {//国庆节
         sessionStorage.setItem("isPopupWindow", "1");
     }
 }
-if (m == 10 && dd == 24) {
+if (m == 10 && dd == 24) {//1024程序员日
     if (sessionStorage.getItem("isPopupWindow") != "1") {
         Swal.fire("1024程序员日快乐！\n程序员的日子，从写代码开始！");
+        sessionStorage.setItem("isPopupWindow", "1");
+    }
+}
+if (m == 10 && dd == 31) {
+    if (sessionStorage.getItem("isPopupWindow") != "1") {
+        Swal.fire("Happy Halloween\n做个快乐的捣蛋鬼👻");
         sessionStorage.setItem("isPopupWindow", "1");
     }
 }
