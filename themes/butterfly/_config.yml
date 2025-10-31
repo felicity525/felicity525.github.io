@@ -1134,7 +1134,14 @@ CDN:
     # local_search:
     # main:
     # main_css:
-    # mathjax:
+    mathjax:
+      enable: true
+      per_page: true
+      engine: 'katex'
+      katex:
+        copy_tex: fa
+        hide_to_mathml: true
+      # The version of MathJax to use
     # medium_zoom:
     # mermaid:
     # meting_js:
