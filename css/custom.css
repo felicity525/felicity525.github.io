@@ -104,7 +104,7 @@ h4::before,
 h5::before,
 h6::before {
     content: "\f005";
-    font-family: "Font Awesome 6 Free", "Font Awesome 6 Solid";
+    font-family: "Font Awesome 5 Free", "Font Awesome 6 Free", "Font Awesome 7 Free";
     font-weight: 900;
     -webkit-animation: ccc 4s linear infinite;
     animation: ccc 4s linear infinite;
