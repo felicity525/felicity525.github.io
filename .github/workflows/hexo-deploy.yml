@@ -9,13 +9,15 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest  # 使用 Ubuntu 环境
+    env:
+      TZ: Asia/Shanghai  # 设置时区，确保 Hexo 生成的时间正确
     steps:
       # 1. 拉取仓库代码
       - name: Checkout
         uses: actions/checkout@v4
         with:
           submodules: true  # 确保主题等子模块被拉取
-          fetch-depth: 0    # 拉取完整历史
+          fetch-depth: 1
 
       # 2. 安装 Node.js（Hexo 依赖 Node）
       - name: Setup Node.js
