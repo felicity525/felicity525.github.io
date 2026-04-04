@@ -61,7 +61,7 @@ social:
 favicon: /favicon.ico
 
 avatar:
-  img: /img1.jpg
+  img: https://cdn.jsdelivr.net/gh/felicity525/Pic@main/blog/D.png
   effect: false
 
 # Disable all banner images
@@ -97,7 +97,7 @@ footer_img: false
 
 # Website Background
 # Can set it to color or image url
-background: /background1.png
+background: https://cdn.jsdelivr.net/gh/felicity525/Pic@main/blog/background1.jpg
 
 cover:
   # Disable the cover or not
